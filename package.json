@@ -14,8 +14,7 @@
     "chalk": "^0.5.1",
     "globule": "^0.2.0",
     "gulp-util": "^3.0.1",
-    "merge": "^1.2.0",
-    "require-all": "^0.0.8"
+    "merge": "^1.2.0"
   },
   "peerDependencies": {
     "envify": "^3.0.0",
