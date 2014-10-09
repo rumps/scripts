@@ -1,6 +1,7 @@
 'use strict';
 
 var globule = require('globule');
+var merge = require('merge');
 var path = require('path');
 var rump = require('rump');
 var webpack = require('webpack');
@@ -58,7 +59,7 @@ module.exports = function() {
     options.plugins.push(new CommonsChunkPlugin(commonsChunk, commonsFile));
   }
 
-  return options;
+  return merge.recursive(options, rump.configs.main.scripts.webpack);
 };
 
 function entries() {
