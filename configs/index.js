@@ -1,11 +1,11 @@
 'use strict';
 
-var merge = require('merge');
+var extend = require('extend');
 var rump = require('rump');
 var webpack = require('./webpack');
 
 exports.rebuild = function() {
-  rump.configs.main.globs = merge.recursive({
+  rump.configs.main.globs = extend(true, {
     build: {
       scripts: '*.js'
     },
@@ -17,7 +17,7 @@ exports.rebuild = function() {
     }
   }, rump.configs.main.globs);
 
-  rump.configs.main.paths = merge.recursive({
+  rump.configs.main.paths = extend(true, {
     source: {
       scripts: 'scripts'
     },
@@ -26,7 +26,7 @@ exports.rebuild = function() {
     }
   }, rump.configs.main.paths);
 
-  rump.configs.main.scripts = merge.recursive({
+  rump.configs.main.scripts = extend(true, {
     aliases: {},
     common: false,
     library: false,
