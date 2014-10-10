@@ -59,6 +59,10 @@ module.exports = function() {
     options.plugins.push(new CommonsChunkPlugin(commonsChunk, commonsFile));
   }
 
+  if(rump.configs.main.scripts.library) {
+    options.output.libraryTarget = 'umd';
+  }
+
   return extend(true, options, rump.configs.main.scripts.webpack);
 };
 

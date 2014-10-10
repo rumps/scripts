@@ -29,10 +29,12 @@ exports.rebuild = function() {
   rump.configs.main.scripts = merge.recursive({
     aliases: {},
     common: false,
+    library: false,
     uglify: {
       dropDebugger: true,
       dropConsole: true
-    }
+    },
+    webpack: {}
   }, rump.configs.main.scripts);
 
   exports.webpack = webpack();
