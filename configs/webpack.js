@@ -21,6 +21,9 @@ module.exports = function() {
                               rump.configs.main.paths.destination.scripts);
   var options = {
     entry: entries(),
+    module: {
+      loaders: []
+    },
     output: {
       path: destination,
       filename: '[name].js'
