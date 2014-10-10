@@ -6,6 +6,7 @@ var path = require('path');
 var rump = require('rump');
 var webpack = require('webpack');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var DefinePlugin = webpack.DefinePlugin;
 var DescPlugin = webpack.ResolverPlugin.DirectoryDescriptionFilePlugin;
 var ResolverPlugin = webpack.ResolverPlugin;
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
@@ -20,17 +21,14 @@ module.exports = function() {
                               rump.configs.main.paths.destination.scripts);
   var options = {
     entry: entries(),
-    module: {
-      loaders: [{
-        test: /\.js$/,
-        loader: 'transform-loader/cacheable?envify'
-      }]
-    },
     output: {
       path: destination,
       filename: '[name].js'
     },
-    plugins: [new ResolverPlugin(new DescPlugin('bower.json', ['main']))],
+    plugins: [
+      new ResolverPlugin(new DescPlugin('bower.json', ['main'])),
+      new DefinePlugin(rump.configs.main.scripts.macros)
+    ],
     resolve: {
       alias: rump.configs.main.scripts.aliases,
       modulesDirectories: ['node_modules', 'bower_components'],

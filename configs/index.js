@@ -30,6 +30,9 @@ exports.rebuild = function() {
     aliases: {},
     common: false,
     library: false,
+    macros: {
+      'process.env.NODE_ENV': JSON.stringify(rump.configs.main.environment)
+    },
     uglify: {
       dropDebugger: true,
       dropConsole: true
