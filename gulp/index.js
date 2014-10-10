@@ -1,8 +1,8 @@
 'use strict';
 
 var chalk = require('chalk');
+var extend = require('extend');
 var gulp = require('gulp');
-var merge = require('merge');
 var rump = require('rump');
 var util = require('gulp-util');
 var webpack = require('webpack');
@@ -12,7 +12,7 @@ gulp.task('rump:build:scripts', function(callback) {
   var options = rump.configs.webpack;
 
   if(rump.configs.watch) {
-    options = merge.recursive({}, options, {watch: true});
+    options = extend({}, options, {watch: true});
   }
 
   webpack(options, function(error, stats) {

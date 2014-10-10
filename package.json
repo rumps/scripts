@@ -12,9 +12,9 @@
   "main": "./index.js",
   "dependencies": {
     "chalk": "^0.5.1",
+    "extend": "^2.0.0",
     "globule": "^0.2.0",
-    "gulp-util": "^3.0.1",
-    "merge": "^1.2.0"
+    "gulp-util": "^3.0.1"
   },
   "peerDependencies": {
     "envify": "^3.0.0",
