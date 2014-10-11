@@ -9,9 +9,6 @@ exports.rebuild = function() {
     build: {
       scripts: '*.js'
     },
-    watch: {
-      scripts: '**/*.js'
-    },
     test: {
       scripts: '**/*_test.js'
     }
