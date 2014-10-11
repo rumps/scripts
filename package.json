@@ -2,7 +2,7 @@
   "name": "rump-scripts",
   "description": "Rump piece for building JS with Webpack",
   "author": "Juan Placencia",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "homepage": "https://github.com/rumps/rump-scripts",
   "repository": {
