@@ -24,10 +24,6 @@ exports.rebuild = function() {
   }, rump.configs.main.paths);
 
   rump.configs.main.scripts = extend(true, {
-    aliases: {},
-    common: false,
-    library: false,
-    loaders: [],
     macros: {
       'process.env.NODE_ENV': JSON.stringify(rump.configs.main.environment)
     },
@@ -35,7 +31,6 @@ exports.rebuild = function() {
       dropDebugger: true,
       dropConsole: true
     },
-    webpack: {}
   }, rump.configs.main.scripts);
 
   exports.webpack = webpack();
