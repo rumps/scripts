@@ -9,8 +9,8 @@ exports.rebuild = function() {
     build: {
       scripts: '*.js'
     },
-    test: {
-      scripts: '**/*_test.js'
+    watch: {
+      scripts: '**/*.js'
     }
   }, rump.configs.main.globs);
 
