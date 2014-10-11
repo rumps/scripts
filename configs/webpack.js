@@ -22,7 +22,7 @@ module.exports = function() {
   var options = {
     entry: entries(),
     module: {
-      loaders: []
+      loaders: rump.configs.main.scripts.loaders
     },
     output: {
       path: destination,

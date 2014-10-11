@@ -27,6 +27,7 @@ exports.rebuild = function() {
     aliases: {},
     common: false,
     library: false,
+    loaders: [],
     macros: {
       'process.env.NODE_ENV': JSON.stringify(rump.configs.main.environment)
     },
