@@ -1,6 +1,5 @@
 'use strict';
 
-var chalk = require('chalk');
 var extend = require('extend');
 var gulp = require('gulp');
 var rump = require('rump');
@@ -23,7 +22,7 @@ gulp.task('rump:build:scripts', function(callback) {
       util.log(stats.toString({
         assets: false,
         chunks: false,
-        colors: chalk.supportsColor,
+        colors: util.colors.supportsColor,
         hash: false,
         modules: false,
         reasons: false,
@@ -32,7 +31,7 @@ gulp.task('rump:build:scripts', function(callback) {
     }
     else {
       callbackCalled = true;
-      util.log(stats.toString({colors: chalk.supportsColor}));
+      util.log(stats.toString({colors: util.colors.supportsColor}));
       callback();
     }
   });
