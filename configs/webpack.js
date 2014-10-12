@@ -6,6 +6,7 @@ var path = require('path');
 var rump = require('rump');
 var webpack = require('webpack');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var DedupePlugin = webpack.DedupePlugin;
 var DefinePlugin = webpack.DefinePlugin;
 var DescPlugin = webpack.ResolverPlugin.DirectoryDescriptionFilePlugin;
 var ResolverPlugin = webpack.ResolverPlugin;
@@ -40,15 +41,17 @@ module.exports = function() {
     watchDelay: 200
   };
 
-  if(rump.configs.main.environment === 'development') {
+  if(rump.configs.main.scripts.sourceMap) {
     options.debug = true;
     options.devtool = 'inline-source-map';
     options.output.devtoolModuleFilenameTemplate = '[absolute-resource-path]';
   }
-  else if(rump.configs.main.environment === 'production') {
+
+  if(rump.configs.main.scripts.minify) {
     options.plugins = options.plugins || [];
-    options.plugins.push(new UglifyJsPlugin(rump.configs.main.scripts.uglify));
+    options.plugins.push(new UglifyJsPlugin(rump.configs.uglifyjs));
     options.plugins.push(new OccurrenceOrderPlugin());
+    options.plugins.push(new DedupePlugin());
   }
 
   if(rump.configs.main.scripts.common) {

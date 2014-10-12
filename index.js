@@ -15,6 +15,12 @@ rump.on('update:main', function() {
   rump.emit('update:scripts');
 });
 
+Object.defineProperty(rump.configs, 'uglifyjs', {
+  get: function() {
+    return configs.uglifyjs;
+  }
+});
+
 Object.defineProperty(rump.configs, 'webpack', {
   get: function() {
     return configs.webpack;
