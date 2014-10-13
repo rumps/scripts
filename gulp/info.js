@@ -5,6 +5,7 @@ var globule = require('globule');
 var gulp = require('gulp');
 var path = require('path');
 var rump = require('rump');
+var pkg = require('../package');
 
 gulp.task('rump:info:scripts', function() {
   var glob = path.join(rump.configs.main.paths.source.root,
@@ -31,7 +32,7 @@ gulp.task('rump:info:scripts', function() {
   }
 
   console.log();
-  console.log(chalk.magenta('--- Scripts'));
+  console.log(chalk.magenta('--- Scripts', 'v' + pkg.version));
   console.log('Processed scripts from', chalk.green(source),
              'are', action,
              'to', chalk.green(destination));
