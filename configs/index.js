@@ -36,8 +36,8 @@ exports.rebuild = function() {
       comments: false
     },
     compress: {
-      drop_console: true,
-      drop_debugger: true
+      'drop_console': true,
+      'drop_debugger': true
     }
   }, rump.configs.main.scripts.uglifyjs);
 
