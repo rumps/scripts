@@ -5,6 +5,7 @@ var globule = require('globule');
 var gulp = require('gulp');
 var path = require('path');
 var rump = require('rump');
+var webpack = require('webpack');
 var pkg = require('../package');
 
 gulp.task('rump:info:scripts', function() {
@@ -17,6 +18,16 @@ gulp.task('rump:info:scripts', function() {
   var destination = path.join(rump.configs.main.paths.destination.root,
                               rump.configs.main.paths.destination.scripts);
   var action = 'copied';
+  var commonFile = rump.configs.webpack.plugins.reduce(function(currentFile, plugin) {
+    if(!currentFile && plugin instanceof webpack.optimize.CommonsChunkPlugin) {
+      return path.join(rump.configs.main.paths.destination.root,
+                       rump.configs.main.paths.destination.scripts,
+                       plugin.filenameTemplate);
+    }
+    else {
+      return currentFile;
+    }
+  }, null);
 
   if(!files.length) {
     return;
@@ -36,6 +47,12 @@ gulp.task('rump:info:scripts', function() {
   console.log('Processed scripts from', chalk.green(source),
              'are', action,
              'to', chalk.green(destination));
+
+  if(rump.configs.main.scripts.common && commonFile) {
+    console.log('Common modules across processed scripts are built into',
+                chalk.green(commonFile));
+  }
+
   console.log('Affected files:');
   files.forEach(function(file) {
     console.log(chalk.blue(path.relative(source, file)));
