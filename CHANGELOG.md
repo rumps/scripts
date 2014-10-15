@@ -1,6 +1,6 @@
 # Changelog
 
-#### WIP
+#### 0.2.2
 - Remove unused watch glob
 
 #### 0.2.1
