@@ -8,9 +8,6 @@ exports.rebuild = function() {
   rump.configs.main.globs = extend(true, {
     build: {
       scripts: '*.js'
-    },
-    watch: {
-      scripts: '**/*.js'
     }
   }, rump.configs.main.globs);
 
