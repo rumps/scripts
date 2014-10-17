@@ -139,3 +139,5 @@ needed:
 - [`traceur-loader`](https://github.com/jupl/traceur-loader) will add support
   for future JS features today to JS files. (`.js` except from `node_modules`
   and `bower_components`)
+
+Want support for another loader? Open an issue/PR.
