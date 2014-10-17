@@ -2,12 +2,13 @@
 
 var extend = require('extend');
 var rump = require('rump');
+var file = require('./file');
 var webpack = require('./webpack');
 
 exports.rebuild = function() {
   rump.configs.main.globs = extend(true, {
     build: {
-      scripts: '*.js'
+      scripts: file.glob
     }
   }, rump.configs.main.globs);
 
@@ -21,6 +22,8 @@ exports.rebuild = function() {
   }, rump.configs.main.paths);
 
   rump.configs.main.scripts = extend(true, {
+    aliases: file.aliases,
+    loaders: file.loaders,
     minify: rump.configs.main.environment === 'production',
     sourceMap: rump.configs.main.environment === 'development',
     macros: {

@@ -1,5 +1,8 @@
 # Changelog
 
+#### WIP
+- Detect some Webpack loaders when building configuration
+
 #### 0.2.2
 - Remove unused watch glob
 

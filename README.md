@@ -40,9 +40,10 @@ This is the directory where processed scripts are copied to. This path is
 relative to the root destination path. (If the default root and scripts path is
 used, then the path would be `dist/scripts`)
 
-#### `options.globs.build.scripts` (`'*.js'`)
-This specifies which scripts to process. By default it processes all JS files
-in the top level directory of the root source path for scripts.
+#### `options.globs.build.scripts` (`'*.js'` minumum)
+This specifies which scripts to process. By default it at least processes all
+JS files in the top level directory of the root source path for scripts. See
+the Loaders section below for information on any other extensions are set.
 
 #### `options.scripts.minify` (`options.environment === 'production'`)
 This specifies whether to minify and uglify generated JS. (minified if `true`)
@@ -67,7 +68,8 @@ This specifies module names to redefine in scripts as it is getting processed.
 Pass in an object with key-value pairs to redefine module names. In fact, this
 is a convenience for Webpack's
 [`resolve.alias`](https://webpack.github.io/docs/configuration.html#resolve-alias)
-option.
+option. See the Loaders section below for information on any aliases already
+set.
 
 #### `options.scripts.common`
 This specifies whether to gather common modules that are shared across multiple
@@ -91,7 +93,8 @@ objects to specify which loaders to apply. In fact, this is a convenience for
 Webpack's
 [`module.loaders`](https://webpack.github.io/docs/configuration.html#module-loaders).
 Read more about using Webpack loaders
-[here](https://webpack.github.io/docs/using-loaders.html).
+[here](https://webpack.github.io/docs/using-loaders.html). See the Loaders
+section below for information on any loaders already set.
 
 #### `options.scripts.webpack`
 This specifies any options you want to override in Webpack. This is best if you
@@ -102,7 +105,7 @@ want to fully make changes in
 This specifies options that are sent to UglifyJS through Webpack when
 minifying. The default options set are:
 
-```
+```js
 {
   output: {
     comments: false
@@ -118,3 +121,21 @@ minifying. The default options set are:
 This contains the generated options that are passed to Webpack and UglifyJS,
 (from Webpack) respectively, in the Gulp task. This is a good way to see what
 options are generated based on defaults and overrides.
+
+
+## Loaders
+Rump Scripts will detect loaders available in the project and append items as
+needed:
+
+- [`coffee-loader`](https://github.com/webpack/coffee-loader) will add support
+  for CoffeeScript files. (`.coffee`, `.coffee.md`, and `.litcoffee`)
+- [`html-loader`](https://github.com/webpack/html-loader) will add support to
+  expose HTML files as a string.
+- [`jsx-loader`](https://github.com/petehunt/jsx-loader) will add support for
+  JS files with JSX, typically for use
+  [with React](http://facebook.github.io/react/docs/jsx-in-depth.html).
+  (`.jsx`) Pragma for React is automatically included and support for Harmony
+  is available.
+- [`traceur-loader`](https://github.com/jupl/traceur-loader) will add support
+  for future JS features today to JS files. (`.js` except from `node_modules`
+  and `bower_components`)

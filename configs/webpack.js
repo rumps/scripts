@@ -5,6 +5,7 @@ var globule = require('globule');
 var path = require('path');
 var rump = require('rump');
 var webpack = require('webpack');
+var file = require('./file');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var DedupePlugin = webpack.optimize.DedupePlugin;
 var DefinePlugin = webpack.DefinePlugin;
@@ -35,6 +36,7 @@ module.exports = function() {
     ],
     resolve: {
       alias: rump.configs.main.scripts.aliases,
+      extensions: [''].concat(file.extensions),
       modulesDirectories: ['node_modules', 'bower_components'],
       root: path.resolve(sourceDir)
     },
