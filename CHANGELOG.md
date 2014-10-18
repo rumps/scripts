@@ -2,6 +2,7 @@
 
 #### WIP
 - Detect some Webpack loaders when building configuration
+- Add default test glob
 
 #### 0.2.2
 - Remove unused watch glob

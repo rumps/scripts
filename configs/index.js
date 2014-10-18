@@ -8,7 +8,8 @@ var webpack = require('./webpack');
 exports.rebuild = function() {
   rump.configs.main.globs = extend(true, {
     build: {
-      scripts: file.glob
+      scripts: file.glob,
+      tests: '**/' + file.glob
     }
   }, rump.configs.main.globs);
 
