@@ -1,6 +1,6 @@
 # Changelog
 
-#### WIP
+#### 0.2.4
 - Add default test glob
 
 #### 0.2.3
