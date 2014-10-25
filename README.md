@@ -132,12 +132,16 @@ needed:
 - [`html-loader`](https://github.com/webpack/html-loader) will add support to
   expose HTML files as a string.
 - [`jsx-loader`](https://github.com/petehunt/jsx-loader) will add support for
-  JS files with JSX, typically for use
-  [with React](http://facebook.github.io/react/docs/jsx-in-depth.html).
-  (`.jsx`) Pragma for React is automatically included and support for Harmony
-  is available.
+  JS files with JSX, typically for use with
+  [React](http://facebook.github.io/react/docs/jsx-in-depth.html). (`.jsx`)
+  Pragma for React is automatically included and support for Harmony is
+  available.
 - [`traceur-loader`](https://github.com/jupl/traceur-loader) will add support
-  for future JS features today to JS files. (`.js` except from `node_modules`
-  and `bower_components`)
+  for future JS features today to JS files using
+  [Traceur](https://github.com/google/traceur-compiler). (`.js` except from
+  `node_modules` and `bower_components`)
+- [`6to5-loader`](https://github.com/Couto/6to5-loader) will add support for
+  converting ES6 code to ES5 using [6to5](https://github.com/sebmck/6to5).
+  (`.js` except from `node_modules` and `bower_components`)
 
 Want support for another loader? Open an issue/PR.

@@ -1,5 +1,8 @@
 # Changelog
 
+#### WIP
+- Add support to auto detect 6to5-loader
+
 #### 0.2.4
 - Add default test glob
 

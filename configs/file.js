@@ -19,6 +19,14 @@ if(moduleExists('traceur-loader')) {
   aliases['traceur-runtime'] = require('traceur-loader').runtime;
 }
 
+// JS with 6to5
+if(moduleExists('6to5-loader')) {
+  loaders.push({
+    test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
+    loaders: ['6to5-loader']
+  });
+}
+
 // JSX
 if(moduleExists('jsx-loader')) {
   extensions.push('.jsx');
