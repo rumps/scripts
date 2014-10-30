@@ -139,7 +139,9 @@ needed:
 - [`traceur-loader`](https://github.com/jupl/traceur-loader) will add support
   for future JS features today to JS files using
   [Traceur](https://github.com/google/traceur-compiler). (`.js` except from
-  `node_modules` and `bower_components`)
+  `node_modules` and `bower_components`) The traceur runtime is exposed and can
+  be accessed via the `traceur-runtime` module alias. (ex:
+  `import 'traceur-runtime'` or `require('traceur-runtime')`)
 - [`6to5-loader`](https://github.com/Couto/6to5-loader) will add support for
   converting ES6 code to ES5 using [6to5](https://github.com/sebmck/6to5).
   (`.js` except from `node_modules` and `bower_components`)
