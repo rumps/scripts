@@ -1,6 +1,6 @@
 # Changelog
 
-#### WIP
+#### 0.2.6
 - Add option to use Webpack's new watcher
 
 #### 0.2.5
