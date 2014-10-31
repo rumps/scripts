@@ -1,5 +1,8 @@
 # Changelog
 
+#### WIP
+- Add option to use Webpack's new watcher
+
 #### 0.2.5
 - Add support to auto detect 6to5-loader
 

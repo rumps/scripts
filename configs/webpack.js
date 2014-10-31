@@ -10,6 +10,7 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var DedupePlugin = webpack.optimize.DedupePlugin;
 var DefinePlugin = webpack.DefinePlugin;
 var DescPlugin = webpack.ResolverPlugin.DirectoryDescriptionFilePlugin;
+var NewWatchingPlugin = webpack.NewWatchingPlugin;
 var ResolverPlugin = webpack.ResolverPlugin;
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var OccurrenceOrderPlugin = webpack.optimize.OccurrenceOrderPlugin;
@@ -43,6 +44,10 @@ module.exports = function() {
     watchDelay: 200
   };
 
+  if (rump.configs.main.scripts.newWatcher) {
+    options.plugins.push(new NewWatchingPlugin());
+  }
+
   if(rump.configs.main.scripts.sourceMap) {
     options.debug = true;
     options.devtool = 'inline-source-map';
@@ -50,7 +55,6 @@ module.exports = function() {
   }
 
   if(rump.configs.main.scripts.minify) {
-    options.plugins = options.plugins || [];
     options.plugins.push(new UglifyJsPlugin(rump.configs.uglifyjs));
     options.plugins.push(new OccurrenceOrderPlugin());
     options.plugins.push(new DedupePlugin());
@@ -61,7 +65,6 @@ module.exports = function() {
       commonsChunk = rump.configs.main.scripts.common;
     }
     commonsFile = commonsChunk + '.js';
-    options.plugins = options.plugins || [];
     options.plugins.push(new CommonsChunkPlugin(commonsChunk, commonsFile));
   }
 

@@ -19,6 +19,6 @@
   },
   "peerDependencies": {
     "rump": "^0.2.0",
-    "webpack": "^1.4.4"
+    "webpack": "^1.4.6"
   }
 }
