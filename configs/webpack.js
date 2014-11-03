@@ -81,12 +81,12 @@ function entries() {
                          rump.configs.main.globs.build.scripts);
 
   return globule
-  .find([source].concat(rump.configs.main.globs.global))
-  .map(function(filename) {
-    return path.basename(filename);
-  })
-  .reduce(function(obj, filename) {
-    obj[path.basename(filename, path.extname(filename))] = filename;
-    return obj;
-  }, {});
+    .find([source].concat(rump.configs.main.globs.global))
+    .map(function(filename) {
+      return path.basename(filename);
+    })
+    .reduce(function(obj, filename) {
+      obj[path.basename(filename, path.extname(filename))] = filename;
+      return obj;
+    }, {});
 }
