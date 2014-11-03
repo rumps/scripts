@@ -17,13 +17,14 @@ The following is appended to the core Rump API:
 
 ### `rump.addGulpTasks()`
 This module adds the following tasks:
-- `rump:build:scripts` will process and build scripts with Webpack. For more
-  information on source and destination paths see `rump.configure()` below.
-  This task is also added to the `rump:build` task for single builds as well as
-  the `rump:watch` task for continuous builds.
-- `rump:info:scripts` will display information on what this specific module
-  does, specifically the source and destination paths as well as what files
-  would get processed. This task is also added to the `rump:info` task.
+
+- `build:scripts` will process and build scripts with Webpack. For more
+information on source and destination paths see `rump.configure()` below. This
+task is also added to the `build` task for single builds as well as the `watch`
+task for continuous builds.
+- `info:scripts` will display information on what this specific module does,
+specifically the source and destination paths as well as what files would get
+processed. This task is also added to the `info` task.
 
 ### `rump.configure(options)`
 Redefine options for Rump and Rump modules to follow. In addition to what

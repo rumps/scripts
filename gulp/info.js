@@ -8,7 +8,7 @@ var rump = require('rump');
 var webpack = require('webpack');
 var pkg = require('../package');
 
-gulp.task('rump:info:scripts', function() {
+gulp.task(rump.taskName('info:scripts'), function() {
   var glob = path.join(rump.configs.main.paths.source.root,
                        rump.configs.main.paths.source.scripts,
                        rump.configs.main.globs.build.scripts);
@@ -18,7 +18,8 @@ gulp.task('rump:info:scripts', function() {
   var destination = path.join(rump.configs.main.paths.destination.root,
                               rump.configs.main.paths.destination.scripts);
   var action = 'copied';
-  var commonFile = rump.configs.webpack.plugins.reduce(function(currentFile, plugin) {
+  var plugins = rump.configs.webpack.plugins;
+  var commonFile = plugins.reduce(function(currentFile, plugin) {
     if(!currentFile && plugin instanceof webpack.optimize.CommonsChunkPlugin) {
       return path.join(rump.configs.main.paths.destination.root,
                        rump.configs.main.paths.destination.scripts,
@@ -45,8 +46,8 @@ gulp.task('rump:info:scripts', function() {
   console.log();
   console.log(chalk.magenta('--- Scripts', 'v' + pkg.version));
   console.log('Processed scripts from', chalk.green(source),
-             'are', action,
-             'to', chalk.green(destination));
+              'are', action,
+              'to', chalk.green(destination));
 
   if(rump.configs.main.scripts.common && commonFile) {
     console.log('Common modules across processed scripts are built into',
@@ -61,4 +62,4 @@ gulp.task('rump:info:scripts', function() {
   console.log();
 });
 
-gulp.tasks['rump:info'].dep.push('rump:info:scripts');
+gulp.tasks[rump.taskName('info')].dep.push(rump.taskName('info:scripts'));
