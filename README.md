@@ -14,7 +14,7 @@ configuration to author your scripts. For more information, visit the
 ## API
 The following is appended to the core Rump API:
 
-### `rump.addGulpTasks()`
+### `rump.addGulpTasks(options)`
 This module adds the following tasks:
 
 - `build:scripts` will process and build scripts with Webpack. For more
