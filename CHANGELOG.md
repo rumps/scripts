@@ -3,6 +3,7 @@
 ### 0.6.0
 - Update to match Rump 0.6.0 (pass options)
 - Update `require-all`
+- Have test glob check for `_test` suffix
 
 ### 0.5.0
 - Update to match Rump 0.5.0 (use same minor version)

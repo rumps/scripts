@@ -9,7 +9,7 @@ exports.rebuild = function() {
   rump.configs.main.globs = extend(true, {
     build: {
       scripts: file.glob,
-      tests: '**/' + file.glob
+      tests: '**/' + file.glob.replace(/^\*\./, '*_test.')
     }
   }, rump.configs.main.globs);
 
