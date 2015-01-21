@@ -44,7 +44,7 @@ module.exports = function() {
     watchDelay: 200
   };
 
-  if (rump.configs.main.scripts.newWatcher) {
+  if(rump.configs.main.scripts.newWatcher) {
     options.plugins.push(new NewWatchingPlugin());
   }
 
