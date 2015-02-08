@@ -38,7 +38,7 @@ if(moduleExists('6to5-loader')) {
 // JSX
 if(moduleExists('jsx-loader')) {
   extensions.push('.jsx');
-  loaders.push('jsx');
+  glob.push('jsx');
   loaders.push({
     test: /\.jsx$/,
     loaders: ['jsx-loader?harmony&insertPragma=React.DOM']

@@ -2,6 +2,7 @@
 
 #### 0.6.1
 - Add JSON loader support
+- Fix glob missing in JSX
 
 ### 0.6.0
 - Update to match Rump 0.6.0 (pass options)
