@@ -132,6 +132,8 @@ options are generated based on defaults and overrides.
 Rump Scripts will detect loaders available in the project and append items as
 needed:
 
+- [`json-loader`](https://github.com/webpack/json-loader) will add support for
+  JSON files.
 - [`coffee-loader`](https://github.com/webpack/coffee-loader) will add support
   for CoffeeScript files. (`.coffee`, `.coffee.md`, and `.litcoffee`)
 - [`html-loader`](https://github.com/webpack/html-loader) will add support to

@@ -10,6 +10,14 @@ var glob = ['js'];
 var loaders = exports.loaders = [];
 var aliases = exports.aliases = {};
 
+// JSON
+if(moduleExists('json-loader')) {
+  loaders.push({
+    test: /\.json$/,
+    loaders: ['json-loader']
+  });
+}
+
 // JS with Traceur
 if(moduleExists('traceur-loader')) {
   loaders.push({
