@@ -2,6 +2,7 @@
 
 #### 0.6.2
 - 6to5 - auto self contain if `6to5-runtime` is available
+- JSX - auto strip Flow annotations
 
 #### 0.6.1
 - Add JSON loader support

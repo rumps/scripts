@@ -44,7 +44,7 @@ if(moduleExists('jsx-loader')) {
   glob.push('jsx');
   loaders.push({
     test: /\.jsx$/,
-    loaders: ['jsx-loader?harmony&insertPragma=React.DOM']
+    loaders: ['jsx-loader?harmony&stripTypes&insertPragma=React.DOM']
   });
 }
 
