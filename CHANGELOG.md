@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.2
+- 6to5 - auto self contain if `6to5-runtime` is available
+
 #### 0.6.1
 - Add JSON loader support
 - Fix glob missing in JSX

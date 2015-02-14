@@ -149,8 +149,10 @@ needed:
   `node_modules` and `bower_components`) The traceur runtime is exposed and can
   be accessed via the `traceur-runtime` module alias. (ex:
   `import 'traceur-runtime'` or `require('traceur-runtime')`)
-- [`6to5-loader`](https://github.com/Couto/6to5-loader) will add support for
-  converting ES6 code to ES5 using [6to5](https://github.com/sebmck/6to5).
-  (`.js` except from `node_modules` and `bower_components`)
+- [`6to5-loader`](https://github.com/6to5/6to5-loader) will add support for
+  converting ES6 code to ES5 using [6to5](http://6to5.org/). If
+  `6to5-runtime` is available, then
+  [`selfContained`](http://6to5.org/docs/usage/transformers/#self-contained) is
+  automatically set. (`.js` except from `node_modules` and `bower_components`)
 
 Want support for another loader? Open an issue/PR.

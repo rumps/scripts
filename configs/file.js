@@ -27,12 +27,15 @@ if(moduleExists('traceur-loader')) {
   aliases['traceur-runtime'] = require('traceur-loader').runtime;
 }
 
-// JS with 6to5
+// JS with 6to5 (auto self contain if 6to5 runtime is available)
 if(moduleExists('6to5-loader')) {
   loaders.push({
     test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
     loaders: ['6to5-loader']
   });
+  if(moduleExists('6to5-runtime')) {
+    loaders[loaders.length - 1].loaders[0] += '?optional=selfContained';
+  }
 }
 
 // JSX
