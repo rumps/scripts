@@ -53,8 +53,12 @@ if(moduleExists('coffee-loader')) {
   extensions.push('.coffee', '.coffee.md', '.litcoffee');
   glob.push('coffee', 'coffee.md', 'litcoffee');
   loaders.push({
-    test: /\.(coffee|coffee\.md|litcoffee)$/,
+    test: /\.coffee$/,
     loaders: ['coffee-loader']
+  });
+  loaders.push({
+    test: /\.(coffee\.md|litcoffee)$/,
+    loaders: ['coffee-loader?literate']
   });
 }
 

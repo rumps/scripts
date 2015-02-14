@@ -3,6 +3,7 @@
 #### 0.6.2
 - 6to5 - auto self contain if `6to5-runtime` is available
 - JSX - auto strip Flow annotations
+- CoffeeScript - set literate mode in loader for literate files
 
 #### 0.6.1
 - Add JSON loader support
