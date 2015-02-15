@@ -150,7 +150,7 @@ needed:
   be accessed via the `traceur-runtime` module alias. (ex:
   `import 'traceur-runtime'` or `require('traceur-runtime')`)
 - [`babel-loader`](https://github.com/babel/babel-loader) will add support for
-  converting ES6+ code to ES5 using [Babel](http://babeljs.org/). If
+  converting ES6+ code to ES5 using [Babel](http://babeljs.io/). If
   `babel-runtime` is available, then
   [`selfContained`](http://babeljs.io/docs/usage/transformers/#self-contained)
   is automatically set. (`.js` except from `node_modules` and
