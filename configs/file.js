@@ -27,7 +27,18 @@ if(moduleExists('traceur-loader')) {
   aliases['traceur-runtime'] = require('traceur-loader').runtime;
 }
 
-// JS with 6to5 (auto self contain if 6to5 runtime is available)
+// JS with Babel (auto self contain if Babel runtime is available)
+if(moduleExists('babel-loader')) {
+  loaders.push({
+    test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
+    loaders: ['babel-loader']
+  });
+  if(moduleExists('babel-runtime')) {
+    loaders[loaders.length - 1].loaders[0] += '?optional=selfContained';
+  }
+}
+
+// Support for Babel's older name 6to5
 if(moduleExists('6to5-loader')) {
   loaders.push({
     test: /^(?!.*(bower_components|node_modules))+.+\.js$/,

@@ -1,7 +1,8 @@
 # Changelog
 
 #### 0.6.2
-- 6to5 - auto self contain if `6to5-runtime` is available
+- 6to5 is now known as Babel (keep 6to5 autodetect for now)
+- Babel - auto self contain if `babel-runtime` is available
 - JSX - auto strip Flow annotations
 - CoffeeScript - set literate mode in loader for literate files
 
