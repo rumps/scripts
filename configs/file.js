@@ -33,7 +33,7 @@ if(moduleExists('babel-loader')) {
     test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
     loaders: ['babel-loader']
   });
-  if(moduleExists('babel-runtime')) {
+  if(moduleExists('babel-runtime/helpers')) {
     loaders[loaders.length - 1].loaders[0] += '?optional=selfContained';
   }
 }
@@ -44,7 +44,7 @@ if(moduleExists('6to5-loader')) {
     test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
     loaders: ['6to5-loader']
   });
-  if(moduleExists('6to5-runtime')) {
+  if(moduleExists('6to5-runtime/helpers')) {
     loaders[loaders.length - 1].loaders[0] += '?optional=selfContained';
   }
 }

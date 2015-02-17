@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.3
+- Fix detecting `babel-runtime`
+
 #### 0.6.2
 - 6to5 is now known as Babel (keep 6to5 autodetect for now)
 - Babel - auto self contain if `babel-runtime` is available
