@@ -1,6 +1,6 @@
 # Changelog
 
-#### 0.6.3
+#### 0.6.4
 - Fix detecting `babel-runtime`
 
 #### 0.6.2
