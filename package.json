@@ -2,16 +2,15 @@
   "name": "rump-scripts",
   "description": "Rump piece for building JS with Webpack",
   "author": "Juan Placencia",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "license": "MIT",
   "homepage": "https://github.com/rumps/rump-scripts",
   "repository": {
     "type": "git",
     "url": "https://github.com/rumps/rump-scripts"
   },
-  "main": "./index.js",
+  "main": "./lib",
   "dependencies": {
-    "chalk": "^0.5.1",
     "extend": "^2.0.0",
     "globule": "^0.2.0",
     "gulp-util": "^3.0.1",
