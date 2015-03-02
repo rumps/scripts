@@ -156,8 +156,9 @@ needed:
   converting ES6+ code to ES5 using [Babel](http://babeljs.io/). If
   `babel-runtime` is available, then
   [`selfContained`](http://babeljs.io/docs/usage/transformers/#self-contained)
-  is automatically set. (`.js` except from `node_modules` and
-  `bower_components`) Babel was formerly known as 6to5, which Rump Scripts will
-  still handle for now the older packages. (`6to5-loader` and `6to5-runtime`)
+  is automatically set. (`.es`, `.es6`, `.jsx`, and `.js` except from
+  `node_modules` and `bower_components`) Babel was formerly known as 6to5,
+  which Rump Scripts will still handle for now the older packages.
+  (`6to5-loader` and `6to5-runtime`)
 
 Want support for another loader? Open an issue/PR.

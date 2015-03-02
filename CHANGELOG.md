@@ -2,6 +2,7 @@
 
 #### 0.6.6
 - Rewrite source maps
+- Add extensions to match Babel's defaults (es/es6/jsx)
 
 #### 0.6.5
 - Fix detecting `babel-runtime`
