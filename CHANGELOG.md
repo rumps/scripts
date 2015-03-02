@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.6
+- Rewrite source maps
+
 #### 0.6.5
 - Fix detecting `babel-runtime`
 
