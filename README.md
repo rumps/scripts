@@ -1,7 +1,10 @@
 # Rump Scripts
 [![NPM](http://img.shields.io/npm/v/rump-scripts.svg?style=flat-square)](https://www.npmjs.org/package/rump-scripts)
 ![License](http://img.shields.io/npm/l/rump-scripts.svg?style=flat-square)
+[![Travis](http://img.shields.io/travis/rumps/rump-scripts.svg?style=flat-square&label=travis)](https://travis-ci.org/rumps/rump-scripts)
+[![Appveyor](http://img.shields.io/appveyor/ci/jupl/rump-scripts.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/jupl/rump-scripts)
 [![Dependencies](http://img.shields.io/david/rumps/rump-scripts.svg?style=flat-square)](https://david-dm.org/rumps/rump-scripts)
+[![Dev Dependencies](http://img.shields.io/david/dev/rumps/rump-scripts.svg?style=flat-square)](https://david-dm.org/rumps/rump-scripts#info=devDependencies)
 
 
 ## About
