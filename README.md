@@ -99,11 +99,6 @@ Read more about using Webpack loaders
 [here](https://webpack.github.io/docs/using-loaders.html). See the Loaders
 section below for information on any loaders already set.
 
-#### `options.scripts.newWatcher`
-This specifies whether to use Webpack's new watching solution. This is helpful
-if you are experiencing issues with watching for file updates with scripts. If
-value is set to `true`, then the new watching plugin is included.
-
 #### `options.scripts.webpack`
 This specifies any options you want to override in Webpack. This is best if you
 want to fully make changes in

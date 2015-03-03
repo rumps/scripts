@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.7
+- Drop/ignore `newWatcher` as Webpack now defauls to it
+
 #### 0.6.6
 - Rewrite source maps
 - Add extensions to match Babel's defaults (es/es6/jsx)
