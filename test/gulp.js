@@ -79,7 +79,7 @@ describe('rump scripts tasks', function() {
     afterEach(co.wrap(function*() {
       yield sleep(800);
       yield [
-        fs.writeFile('test/src/index.js', originals[0]),
+        fs.writeFile('test/src/js/index.js', originals[0]),
         fs.writeFile('test/src/js/lib/index.js', originals[1])
       ];
       yield sleep(800);
