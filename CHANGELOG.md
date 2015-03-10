@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.8
+- Turn off minification for HTML
+
 #### 0.6.7
 - Drop/ignore `newWatcher` as Webpack now defauls to it
 
