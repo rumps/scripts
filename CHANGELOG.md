@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.9
+- Fix runtime option for Babel
+
 #### 0.6.8
 - Turn off minification for HTML
 
