@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.6.10
+- Fix runtime option for Babel
+
 #### 0.6.9
 - Fix runtime option for Babel
 
