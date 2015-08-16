@@ -2,27 +2,26 @@ import extend from 'extend'
 import rump from 'rump'
 import webpack from 'webpack'
 import {find} from 'globule'
-import {basename, extname, join, resolve} from 'path'
+import {basename, extname, join, resolve, sep} from 'path'
 import {extensions} from './file'
 
 const {configs} = rump,
       {CommonsChunkPlugin, DedupePlugin} = webpack.optimize,
       {UglifyJsPlugin, OccurrenceOrderPlugin} = webpack.optimize,
       {DefinePlugin, ResolverPlugin} = webpack,
-      DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin
+      DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin,
+      protocol = process.platform === 'win32' ? 'file:///' : 'file://'
 
 export default function() {
   let commonsChunk = 'common'
-  const sourceDir = join(configs.main.paths.source.root,
-                         configs.main.paths.source.scripts),
+  const source = join(configs.main.paths.source.root,
+                      configs.main.paths.source.scripts),
         destination = join(configs.main.paths.destination.root,
                            configs.main.paths.destination.scripts),
         options = {
+          context: source,
           entry: entries(),
-          output: {
-            path: destination,
-            filename: '[name].js',
-          },
+          output: {path: destination, filename: '[name].js'},
           module: {loaders: configs.main.scripts.loaders},
           plugins: [
             new ResolverPlugin(new DescPlugin('bower.json', ['main'])),
@@ -32,7 +31,7 @@ export default function() {
             alias: configs.main.scripts.aliases,
             extensions: [''].concat(extensions),
             modulesDirectories: ['node_modules', 'bower_components'],
-            root: resolve(sourceDir),
+            root: resolve(source),
           },
           watchOptions: {aggregateTimeout: 200},
         }
@@ -40,7 +39,7 @@ export default function() {
   if(configs.main.scripts.sourceMap) {
     options.debug = true
     options.devtool = 'inline-source-map'
-    options.output.devtoolModuleFilenameTemplate = '[absolute-resource-path]'
+    options.output.devtoolModuleFilenameTemplate = filenameTemplate
   }
   if(configs.main.scripts.minify) {
     options.plugins.push(new UglifyJsPlugin(configs.uglifyjs))
@@ -71,4 +70,8 @@ function entries() {
       obj[basename(filename, extname(filename))] = filename
       return obj
     }, {})
+}
+
+function filenameTemplate({absoluteResourcePath}) {
+  return `${protocol}${absoluteResourcePath.split(sep).join('/')}`
 }
