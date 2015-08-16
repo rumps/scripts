@@ -9,8 +9,8 @@ import {readFile, writeFile} from 'mz/fs'
 import {resolve, sep} from 'path'
 import {spy} from 'sinon'
 
-const {stripColor} = colors,
-      protocol = process.platform === 'win32' ? 'file:///' : 'file://'
+const protocol = process.platform === 'win32' ? 'file:///' : 'file://',
+      {stripColor} = colors
 
 describe('tasks', function() {
   this.timeout(0)
@@ -38,7 +38,6 @@ describe('tasks', function() {
   it('displays correct information in info task', () => {
     const logs = [],
           {log} = console
-
     console.log = (...args) => logs.push(stripColor(args.join(' ')))
     gulp.start('spec:info')
     console.log = log
@@ -55,14 +54,18 @@ describe('tasks', function() {
   describe('for building', () => {
     let originals
 
-    before(async(done) => {
+    before(async() => {
       originals = await Promise.all([
         readFile('test/fixtures/index.js'),
         readFile('test/fixtures/lib/index.js'),
       ])
-      gulp.task('postbuild', ['spec:watch'], () => done())
-      gulp.start('postbuild')
+      await new Promise(resolve => {
+        gulp.task('postbuild', ['spec:watch'], resolve)
+        gulp.start('postbuild')
+      })
     })
+
+    beforeEach(() => timeout(1000))
 
     afterEach(async() => {
       await timeout(1000)
@@ -70,17 +73,14 @@ describe('tasks', function() {
         writeFile('test/fixtures/index.js', originals[0]),
         writeFile('test/fixtures/lib/index.js', originals[1]),
       ])
-      await timeout(1000)
     })
 
     it('handles updates', async() => {
       const firstContent = await readFile('tmp/index.js')
-      let secondContent
       await timeout(1000)
       await writeFile('test/fixtures/lib/index.js', 'module.exports = "";')
       await timeout(1000)
-      secondContent = await readFile('tmp/index.js')
-      bufferEqual(firstContent, secondContent).should.be.false()
+      bufferEqual(firstContent, await readFile('tmp/index.js')).should.be.false()
     })
 
     it('handles source maps in development', async() => {
