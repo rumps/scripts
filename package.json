@@ -1,38 +1,51 @@
 {
   "name": "rump-scripts",
-  "description": "Rump piece for building JS with Webpack",
+  "version": "0.7.0",
   "author": "Juan Placencia",
-  "version": "0.6.10",
+  "description": "Rump piece for building JS with Webpack",
   "license": "MIT",
-  "homepage": "https://github.com/rumps/rump-scripts",
+  "homepage": "https://github.com/rumps/scripts",
+  "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rumps/rump-scripts"
+    "url": "https://github.com/rumps/scripts"
   },
   "scripts": {
-    "test": "jshint lib test && mocha"
+    "preci": "npm run test",
+    "ci": "babel-node node_modules/.bin/isparta cover --report json _mocha",
+    "postci": "codecov < coverage/coverage.json",
+    "precompile": "[ -d lib ] && trash lib || true",
+    "compile": "babel src --out-dir lib --source-maps=inline",
+    "coverage": "babel-node node_modules/.bin/isparta cover --report html --report text _mocha -- -R min",
+    "lint": "eslint src test",
+    "pub": "npm run test && npm run compile && npm publish",
+    "pretest": "npm run lint",
+    "test": "_mocha"
   },
-  "main": "./lib",
   "dependencies": {
-    "extend": "^2.0.0",
+    "extend": "^3.0.0",
     "globule": "^0.2.0",
-    "gulp-util": "^3.0.1",
-    "require-all": "^1.0.0",
-    "webpack": "^1.6.0"
+    "gulp-util": "^3.0.6",
+    "webpack": "~1.11.0"
   },
   "devDependencies": {
-    "babel": "^4.4.3",
+    "babel": "^5.8.19",
+    "babel-eslint": "^4.0.5",
     "buffer-equal": "^0.0.1",
-    "co": "^4.4.0",
-    "convert-source-map": "^0.5.0",
-    "graceful-fs": "^3.0.5",
-    "gulp": "^3.8.8",
-    "lodash": "^3.3.1",
-    "jshint": "^2.6.0",
-    "mocha": "^2.1.0",
-    "mz": "^1.3.0",
-    "rump": "^0.6.0",
-    "sinon": "^1.12.2",
-    "timeout-then": "^1.0.0"
+    "codecov.io": "^0.1.5",
+    "convert-source-map": "^1.1.1",
+    "eslint": "^1.0.0",
+    "graceful-fs": "^4.1.2",
+    "gulp": "^3.9.0",
+    "isparta": "^3.0.3",
+    "lodash": "^3.10.1",
+    "mocha": "^2.2.5",
+    "mz": "^2.0.0",
+    "rump": "^0.7.0",
+    "should": "^7.0.2",
+    "should-sinon": "0.0.3",
+    "sinon": "^1.15.4",
+    "timeout-then": "^1.0.0",
+    "trash": "^2.0.0"
   }
 }

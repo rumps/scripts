@@ -1,5 +1,17 @@
 # Changelog
 
+### 0.7.0
+- Use Babel fully for ES2015+
+- Replace JSHint with ESLint
+- Add code coverage support
+- Update packages
+- Rewrite tests with ES2015+ and should.js
+- **BREAKING** Drop auto checking for loaders in favor of Babel
+  - `6to5-loader`
+  - `jsx-loader`
+  - `traceur-loader`
+- Update `babel-loader`'s runtime option
+
 #### 0.6.10
 - Fix runtime option for Babel
 
