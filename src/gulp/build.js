@@ -14,13 +14,21 @@ tasks[name('build')].dep.push(name('build:scripts'))
 tasks[name('watch')].dep.push(name('build:scripts'))
 
 function build(callback) {
+  const options = extend({}, configs.webpack),
+        {watchOptions} = options
   let callbackCalled = false,
-      options = configs.webpack
+      compiler
 
+  delete options.watchOptions
+  compiler = webpack(options)
   if(configs.watch) {
-    options = extend({}, options, {watch: true})
+    compiler.watch(watchOptions, handler)
   }
-  webpack(options, function(error, stats) {
+  else {
+    compiler.run(handler)
+  }
+
+  function handler(error, stats) {
     if(error) {
       throw new PluginError(name('build:scripts'), error)
     }
@@ -40,5 +48,5 @@ function build(callback) {
       log(stats.toString({colors: supportsColor}))
       return callback()
     }
-  })
+  }
 }
