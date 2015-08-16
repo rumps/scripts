@@ -67,13 +67,10 @@ describe('tasks', function() {
 
     beforeEach(() => timeout(1000))
 
-    afterEach(async() => {
-      await timeout(1000)
-      await Promise.all([
-        writeFile('test/fixtures/index.js', originals[0]),
-        writeFile('test/fixtures/lib/index.js', originals[1]),
-      ])
-    })
+    afterEach(() => Promise.all([
+      writeFile('test/fixtures/index.js', originals[0]),
+      writeFile('test/fixtures/lib/index.js', originals[1]),
+    ]))
 
     it('handles updates', async() => {
       const firstContent = await readFile('tmp/index.js')
