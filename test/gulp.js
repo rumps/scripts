@@ -19,7 +19,7 @@ describe('tasks', function() {
     rump.configure({
       environment: 'development',
       paths: {
-        source: {root: 'test/src', scripts: ''},
+        source: {root: 'test/fixtures', scripts: ''},
         destination: {root: 'tmp', scripts: ''},
       },
     })
@@ -45,7 +45,7 @@ describe('tasks', function() {
     logs.slice(-6).should.eql([
       '',
       '--- Scripts v0.7.0',
-      `Processed scripts from test${sep}src are copied with source maps to tmp`,
+      `Processed scripts from test${sep}fixtures are copied with source maps to tmp`,
       'Affected files:',
       'index.js',
       '',
@@ -57,8 +57,8 @@ describe('tasks', function() {
 
     before(async(done) => {
       originals = await Promise.all([
-        readFile('test/src/index.js'),
-        readFile('test/src/lib/index.js'),
+        readFile('test/fixtures/index.js'),
+        readFile('test/fixtures/lib/index.js'),
       ])
       gulp.task('postbuild', ['spec:watch'], () => done())
       gulp.start('postbuild')
@@ -67,8 +67,8 @@ describe('tasks', function() {
     afterEach(async() => {
       await timeout(1000)
       await Promise.all([
-        writeFile('test/src/index.js', originals[0]),
-        writeFile('test/src/lib/index.js', originals[1]),
+        writeFile('test/fixtures/index.js', originals[0]),
+        writeFile('test/fixtures/lib/index.js', originals[1]),
       ])
       await timeout(1000)
     })
@@ -77,7 +77,7 @@ describe('tasks', function() {
       const firstContent = await readFile('tmp/index.js')
       let secondContent
       await timeout(1000)
-      await writeFile('test/src/lib/index.js', 'module.exports = "";')
+      await writeFile('test/fixtures/lib/index.js', 'module.exports = "";')
       await timeout(1000)
       secondContent = await readFile('tmp/index.js')
       bufferEqual(firstContent, secondContent).should.be.false()
@@ -92,7 +92,7 @@ describe('tasks', function() {
               .filter(x => x)
               .map(x => x.replace(protocol, '').split('/').join(sep))
       paths.should.eql([
-        resolve('test/src/index.js'),
+        resolve('test/fixtures/index.js'),
       ])
     })
   })
