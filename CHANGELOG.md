@@ -11,6 +11,7 @@
   - `jsx-loader`
   - `traceur-loader`
 - Update `babel-loader`'s runtime option
+- Add `riotjs-loader`
 
 #### 0.6.10
 - Fix runtime option for Babel

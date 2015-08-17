@@ -1,9 +1,11 @@
 import {resolve} from 'path'
+import {ProvidePlugin} from 'webpack'
 
 const aliases = {},
       extensions = ['.js'],
       globExtensions = ['js'],
       loaders = [],
+      plugins = [],
       pkg = require(resolve('package')),
       {dependencies = {}} = pkg,
       {devDependencies = {}} = pkg,
@@ -62,12 +64,23 @@ if(moduleExists('html-loader')) {
   })
 }
 
+// Riot
+if(moduleExists('riotjs-loader')) {
+  extensions.push('.tag')
+  globExtensions.push('tag')
+  loaders.push({
+    test: /\.tag$/,
+    loaders: ['riotjs-loader'],
+  })
+  plugins.push(new ProvidePlugin({riot: 'riot'}))
+}
+
 // Build glob
 glob = globExtensions.length > 1
   ? `*.{${globExtensions.join(',')}}`
   : `*.${globExtensions[0]}`
 
-export {aliases, extensions, glob, loaders}
+export {aliases, extensions, glob, loaders, plugins}
 
 function moduleExists(mod, path = mod) {
   if(modules.includes(mod)) {
