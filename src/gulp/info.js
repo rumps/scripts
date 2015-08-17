@@ -1,16 +1,16 @@
 import gulp, {tasks} from 'gulp'
 import rump from 'rump'
-import webpack from 'webpack'
+import {optimize} from 'webpack'
 import {find} from 'globule'
 import {colors} from 'gulp-util'
 import {join, relative} from 'path'
 import {version} from '../../package'
 
-const {blue, green, magenta, yellow} = colors,
-      {configs} = rump,
-      {CommonsChunkPlugin} = webpack.optimize,
-      name = ::rump.taskName,
-      task = ::gulp.task
+const name = ::rump.taskName,
+      task = ::gulp.task,
+      {blue, green, magenta, yellow} = colors,
+      {CommonsChunkPlugin} = optimize,
+      {configs} = rump
 
 task(name('info:scripts'), () => {
   const {plugins} = configs.webpack,

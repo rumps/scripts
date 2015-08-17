@@ -5,11 +5,11 @@ import {basename, extname, join, resolve, sep} from 'path'
 import {DefinePlugin, ResolverPlugin, optimize} from 'webpack'
 import {extensions, plugins} from './file'
 
-const {configs} = rump,
+const DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin,
+      protocol = process.platform === 'win32' ? 'file:///' : 'file://',
+      {configs} = rump,
       {CommonsChunkPlugin, DedupePlugin} = optimize,
-      {UglifyJsPlugin, OccurrenceOrderPlugin} = optimize,
-      DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin,
-      protocol = process.platform === 'win32' ? 'file:///' : 'file://'
+      {UglifyJsPlugin, OccurrenceOrderPlugin} = optimize
 
 export default function() {
   let commonsChunk = 'common'

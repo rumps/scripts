@@ -4,10 +4,10 @@ import rump from 'rump'
 import webpack from 'webpack'
 import {PluginError, colors, log} from 'gulp-util'
 
-const {configs} = rump,
-      {supportsColor} = colors,
-      name = ::rump.taskName,
-      task = ::gulp.task
+const name = ::rump.taskName,
+      task = ::gulp.task,
+      {configs} = rump,
+      {supportsColor} = colors
 
 task(name('build:scripts'), build)
 tasks[name('build')].dep.push(name('build:scripts'))

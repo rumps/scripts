@@ -3,9 +3,9 @@ import rump from 'rump'
 import webpack from './webpack'
 import {aliases, loaders, glob} from './file'
 
-const {configs} = rump,
-      dropConsoleKey = 'drop_console',
-      dropDebuggerKey = 'drop_debugger'
+const dropConsoleKey = 'drop_console',
+      dropDebuggerKey = 'drop_debugger',
+      {configs} = rump
 
 rebuild()
 
