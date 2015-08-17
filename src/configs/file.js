@@ -18,6 +18,7 @@ let glob
 
 // JSON
 if(moduleExists('json-loader')) {
+  extensions.push('.json')
   loaders.push({
     test: /\.json$/,
     loaders: ['json-loader'],
@@ -65,7 +66,7 @@ glob = globExtensions.length > 1
   ? `*.{${globExtensions.join(',')}}`
   : `*.${globExtensions[0]}`
 
-export {aliases, glob, loaders}
+export {aliases, extensions, glob, loaders}
 
 function moduleExists(mod, path = mod) {
   if(modules.includes(mod)) {
