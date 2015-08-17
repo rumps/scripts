@@ -94,15 +94,18 @@ describe('tasks', function() {
             paths = [].concat(...pathSet)
               .filter(x => x)
               .map(x => x.replace(protocol, '').split('/').join(sep))
-              .filter(x => !x.startsWith('webpack'))
-      paths.should.eql([
+      paths.should.have.length(11)
+      paths.filter(x => !x.startsWith('webpack')).should.eql([
+        resolve('node_modules/riot/riot.js'),
         resolve('test/fixtures/lib/html.html'),
         resolve('node_modules/lodash/internal/isObjectLike.js'),
         resolve('node_modules/lodash/lang/isNumber.js'),
         resolve('test/fixtures/index.js'),
         resolve('test/fixtures/lib/index.js'),
+        resolve('test/fixtures/tags/type.tag'),
         resolve('test/fixtures/coffee.coffee'),
         resolve('test/fixtures/lib/json.json'),
+        resolve('test/fixtures/tags/name.tag'),
       ])
     })
   })
