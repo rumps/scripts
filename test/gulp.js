@@ -41,11 +41,12 @@ describe('tasks', function() {
     console.log = (...args) => logs.push(stripColor(args.join(' ')))
     gulp.start('spec:info')
     console.log = log
-    logs.slice(-6).should.eql([
+    logs.slice(-7).should.eql([
       '',
       '--- Scripts v0.7.0',
       `Processed scripts from test${sep}fixtures are copied with source maps to tmp`,
       'Affected files:',
+      'coffee.coffee',
       'index.js',
       '',
     ])
@@ -81,15 +82,23 @@ describe('tasks', function() {
     })
 
     it('handles source maps in development', async() => {
-      const content = await readFile('tmp/index.js'),
-            paths = convert
-              .fromSource(content.toString())
-              .getProperty('sources')
-              .sort()
+      const js = readFile('tmp/index.js'),
+            coffee = readFile('tmp/coffee.js'),
+            contents = await Promise.all([js, coffee]),
+            pathSet = contents
+              .map(x => convert.fromSource(x.toString()))
+              .map(x => x.getProperty('sources').sort()),
+            paths = [].concat(...pathSet)
               .filter(x => x)
               .map(x => x.replace(protocol, '').split('/').join(sep))
+              .filter(x => !x.startsWith('webpack'))
       paths.should.eql([
+        resolve('node_modules/lodash/internal/isObjectLike.js'),
+        resolve('node_modules/lodash/lang/isNumber.js'),
         resolve('test/fixtures/index.js'),
+        resolve('test/fixtures/lib/index.js'),
+        resolve('test/fixtures/coffee.coffee'),
+        resolve('test/fixtures/lib/json.json'),
       ])
     })
   })
