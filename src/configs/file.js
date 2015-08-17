@@ -27,14 +27,15 @@ if(moduleExists('json-loader')) {
 
 // JS with Babel (auto self contain if Babel runtime is available)
 if(moduleExists('babel-loader')) {
+  const loader = {
+    test: /^(?!.*(bower_components|node_modules))+.+\.jsx?$/,
+    loaders: ['babel-loader'],
+  }
   extensions.push('.jsx')
   globExtensions.push('jsx')
-  loaders.push({
-    test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
-    loaders: ['babel-loader'],
-  })
+  loaders.push(loader)
   if(moduleExists('babel-runtime', 'babel-runtime/package')) {
-    loaders[loaders.length - 1].loaders[0] += '?optional[]=runtime'
+    loader.loaders[0] += '?optional[]=runtime'
   }
 }
 
