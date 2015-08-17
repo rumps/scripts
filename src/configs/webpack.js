@@ -1,14 +1,13 @@
 import extend from 'extend'
 import rump from 'rump'
-import webpack from 'webpack'
 import {find} from 'globule'
 import {basename, extname, join, resolve, sep} from 'path'
+import {DefinePlugin, ResolverPlugin, optimize} from 'webpack'
 import {extensions} from './file'
 
 const {configs} = rump,
-      {CommonsChunkPlugin, DedupePlugin} = webpack.optimize,
-      {UglifyJsPlugin, OccurrenceOrderPlugin} = webpack.optimize,
-      {DefinePlugin, ResolverPlugin} = webpack,
+      {CommonsChunkPlugin, DedupePlugin} = optimize,
+      {UglifyJsPlugin, OccurrenceOrderPlugin} = optimize,
       DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin,
       protocol = process.platform === 'win32' ? 'file:///' : 'file://'
 
