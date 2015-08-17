@@ -22,6 +22,7 @@ describe('tasks', function() {
         source: {root: 'test/fixtures', scripts: ''},
         destination: {root: 'tmp', scripts: ''},
       },
+      scripts: {common: true},
     })
   })
 
@@ -41,10 +42,11 @@ describe('tasks', function() {
     console.log = (...args) => logs.push(stripColor(args.join(' ')))
     gulp.start('spec:info')
     console.log = log
-    logs.slice(-7).should.eql([
+    logs.slice(-8).should.eql([
       '',
       '--- Scripts v0.7.0',
       `Processed scripts from test${sep}fixtures are copied with source maps to tmp`,
+      `Common modules across processed scripts are built into tmp${sep}common.js`,
       'Affected files:',
       'coffee.coffee',
       'index.js',
@@ -84,7 +86,8 @@ describe('tasks', function() {
     it('handles source maps in development', async() => {
       const js = readFile('tmp/index.js'),
             coffee = readFile('tmp/coffee.js'),
-            contents = await Promise.all([js, coffee]),
+            common = readFile('tmp/common.js'),
+            contents = await Promise.all([common, js, coffee]),
             pathSet = contents
               .map(x => convert.fromSource(x.toString()))
               .map(x => x.getProperty('sources').sort()),
@@ -93,6 +96,7 @@ describe('tasks', function() {
               .map(x => x.replace(protocol, '').split('/').join(sep))
               .filter(x => !x.startsWith('webpack'))
       paths.should.eql([
+        resolve('test/fixtures/lib/html.html'),
         resolve('node_modules/lodash/internal/isObjectLike.js'),
         resolve('node_modules/lodash/lang/isNumber.js'),
         resolve('test/fixtures/index.js'),
