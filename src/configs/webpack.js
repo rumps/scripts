@@ -19,7 +19,6 @@ export default function() {
         destination = join(configs.main.paths.destination.root,
                            configs.main.paths.destination.scripts),
         options = {
-          context: source,
           entry: entries(),
           output: {path: destination, filename: '[name].js'},
           module: {loaders: configs.main.scripts.loaders},
