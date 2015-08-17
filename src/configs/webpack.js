@@ -3,7 +3,7 @@ import rump from 'rump'
 import {find} from 'globule'
 import {basename, extname, join, resolve, sep} from 'path'
 import {DefinePlugin, ResolverPlugin, optimize} from 'webpack'
-import {extensions} from './file'
+import {extensions, plugins} from './file'
 
 const {configs} = rump,
       {CommonsChunkPlugin, DedupePlugin} = optimize,
@@ -21,10 +21,10 @@ export default function() {
           entry: entries(),
           output: {path: destination, filename: '[name].js'},
           module: {loaders: configs.main.scripts.loaders},
-          plugins: [
+          plugins: plugins.concat([
             new ResolverPlugin(new DescPlugin('bower.json', ['main'])),
             new DefinePlugin(configs.main.scripts.macros),
-          ],
+          ]),
           resolve: {
             alias: configs.main.scripts.aliases,
             extensions: [''].concat(extensions),
