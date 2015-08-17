@@ -39,7 +39,7 @@ describe('tasks', function() {
   it('displays correct information in info task', () => {
     const logs = [],
           {log} = console
-    console.log = (...args) => logs.push(stripColor(args.join(' ')))
+    console.log = newLog
     gulp.start('spec:info')
     console.log = log
     logs.slice(-8).should.eql([
@@ -52,6 +52,25 @@ describe('tasks', function() {
       'index.js',
       '',
     ])
+    logs.length = 0
+    console.log = newLog
+    gulp.start('spec:info:prod')
+    console.log = log
+    logs.slice(-8).should.eql([
+      '',
+      '--- Scripts v0.7.0',
+      `Processed scripts from test${sep}fixtures are minified and copied to tmp`,
+      `Common modules across processed scripts are built into tmp${sep}common.js`,
+      'Affected files:',
+      'coffee.coffee',
+      'index.js',
+      '',
+    ])
+    rump.reconfigure({environment: 'development'})
+
+    function newLog(...args) {
+      logs.push(stripColor(args.join(' ')))
+    }
   })
 
   describe('for building', () => {
