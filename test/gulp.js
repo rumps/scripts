@@ -5,7 +5,7 @@ import gulp from 'gulp'
 import timeout from 'timeout-then'
 import rump from 'rump'
 import {colors} from 'gulp-util'
-import {readFile, writeFile} from 'mz/fs'
+import {exists, readFile, writeFile} from 'mz/fs'
 import {resolve, sep} from 'path'
 import {spy} from 'sinon'
 
@@ -78,7 +78,20 @@ describe('tasks', function() {
     }
   })
 
-  describe('for building', () => {
+  it('for building', async() => {
+    await new Promise(resolve => {
+      gulp.task('postbuild', ['spec:build'], resolve)
+      gulp.start('postbuild')
+    })
+    const filesExists = await Promise.all([
+      exists('tmp/coffee.js'),
+      exists('tmp/common.js'),
+      exists('tmp/index.js'),
+    ])
+    filesExists.forEach(x => x.should.be.true())
+  })
+
+  describe('for watching', () => {
     let originals
 
     before(async() => {
@@ -87,8 +100,8 @@ describe('tasks', function() {
         readFile('test/fixtures/lib/index.js'),
       ])
       await new Promise(resolve => {
-        gulp.task('postbuild', ['spec:watch'], resolve)
-        gulp.start('postbuild')
+        gulp.task('postwatch', ['spec:watch'], resolve)
+        gulp.start('postwatch')
       })
     })
 
