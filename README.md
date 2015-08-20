@@ -1,17 +1,33 @@
 # Rump Scripts
 [![NPM](http://img.shields.io/npm/v/rump-scripts.svg?style=flat-square)](https://www.npmjs.org/package/rump-scripts)
 ![License](http://img.shields.io/npm/l/rump-scripts.svg?style=flat-square)
-[![Travis](http://img.shields.io/travis/rumps/rump-scripts.svg?style=flat-square&label=travis)](https://travis-ci.org/rumps/rump-scripts)
+[![Issues](https://img.shields.io/github/issues/rumps/issues.svg?style=flat-square)](https://github.com/rumps/issues/issues)
+
+
+## Status
+
+### Master
+[![Dependencies](http://img.shields.io/david/rumps/scripts.svg?style=flat-square)](https://david-dm.org/rumps/scripts)
+[![Dev Dependencies](http://img.shields.io/david/dev/rumps/scripts.svg?style=flat-square)](https://david-dm.org/rumps/scripts#info=devDependencies)
+<br>
+[![Travis](http://img.shields.io/travis/rumps/scripts.svg?style=flat-square&label=travis)](https://travis-ci.org/rumps/scripts)
 [![Appveyor](http://img.shields.io/appveyor/ci/jupl/rump-scripts.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/jupl/rump-scripts)
-[![Dependencies](http://img.shields.io/david/rumps/rump-scripts.svg?style=flat-square)](https://david-dm.org/rumps/rump-scripts)
-[![Dev Dependencies](http://img.shields.io/david/dev/rumps/rump-scripts.svg?style=flat-square)](https://david-dm.org/rumps/rump-scripts#info=devDependencies)
+[![Codecov](http://img.shields.io/codecov/c/github/rumps/scripts.svg?style=flat-square&label=codecov)](https://codecov.io/github/rumps/scripts?view=all)
+
+### Develop
+[![Dependencies](http://img.shields.io/david/rumps/scripts/develop.svg?style=flat-square)](https://david-dm.org/rumps/scripts/develop)
+[![Dev Dependencies](http://img.shields.io/david/dev/rumps/scripts/develop.svg?style=flat-square)](https://david-dm.org/rumps/scripts/develop#info=devDependencies)
+<br>
+[![Travis](http://img.shields.io/travis/rumps/scripts/develop.svg?style=flat-square&label=travis)](https://travis-ci.org/rumps/scripts)
+[![Appveyor](http://img.shields.io/appveyor/ci/jupl/rump-scripts/develop.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/jupl/rump-scripts)
+[![Codecov](http://img.shields.io/codecov/c/github/rumps/scripts/develop.svg?style=flat-square&label=codecov)](https://codecov.io/github/rumps/scripts?branch=develop&view=all)
 
 
 ## About
 Rump Scripts is a Rump module for handling and building scripts with
 [Webpack](https://webpack.github.io/), offering a lot of flexibility and
 configuration to author your scripts. For more information, visit the
-[Rump repository](https://github.com/rumps/rump).
+[core repository](https://github.com/rumps/core).
 
 
 ## API
@@ -136,24 +152,10 @@ needed:
   for CoffeeScript files. (`.coffee`, `.coffee.md`, and `.litcoffee`)
 - [`html-loader`](https://github.com/webpack/html-loader) will add support to
   expose HTML files as a string.
-- [`jsx-loader`](https://github.com/petehunt/jsx-loader) will add support for
-  JS files with JSX, typically for use with
-  [React](http://facebook.github.io/react/docs/jsx-in-depth.html). (`.jsx`)
-  Pragma for React is automatically included and support for Harmony is
-  available.
-- [`traceur-loader`](https://github.com/jupl/traceur-loader) will add support
-  for future JS features today to JS files using
-  [Traceur](https://github.com/google/traceur-compiler). (`.js` except from
-  `node_modules` and `bower_components`) The traceur runtime is exposed and can
-  be accessed via the `traceur-runtime` module alias. (ex:
-  `import 'traceur-runtime'` or `require('traceur-runtime')`)
 - [`babel-loader`](https://github.com/babel/babel-loader) will add support for
-  converting ES6+ code to ES5 using [Babel](http://babeljs.io/). If
-  `babel-runtime` is available, then
-  [`selfContained`](http://babeljs.io/docs/usage/transformers/#self-contained)
-  is automatically set. (`.es`, `.es6`, `.jsx`, and `.js` except from
-  `node_modules` and `bower_components`) Babel was formerly known as 6to5,
-  which Rump Scripts will still handle for now the older packages.
-  (`6to5-loader` and `6to5-runtime`)
+  transpiling JS and JSX using [Babel](http://babeljs.io/). If `babel-runtime`
+  is available, then [`runtime`](http://babeljs.io/docs/usage/runtime/)  is
+  automatically set. (`.js`, and `.jsx` except from `node_modules` and
+  `bower_components`)
 
 Want support for another loader? Open an issue/PR.
