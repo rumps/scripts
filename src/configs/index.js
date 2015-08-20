@@ -19,8 +19,8 @@ export function rebuild() {
     destination: {scripts: 'scripts'},
   }, configs.main.paths)
   configs.main.scripts = extend(true, {
-    aliases,
-    loaders,
+    aliases: [...aliases],
+    loaders: [...loaders],
     minify: configs.main.environment === 'production',
     sourceMap: configs.main.environment === 'development',
     macros: {
