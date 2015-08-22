@@ -10,6 +10,16 @@
     "type": "git",
     "url": "https://github.com/rumps/scripts"
   },
+  "keywords": [
+    "babel",
+    "bower",
+    "coffee-script",
+    "gulp",
+    "javascript",
+    "rump",
+    "rump-module",
+    "webpack"
+  ],
   "scripts": {
     "codecov": "npm run coverage",
     "postcodecov": "codecov < coverage/coverage.json",
