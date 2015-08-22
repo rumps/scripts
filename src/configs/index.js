@@ -1,7 +1,7 @@
 import extend from 'extend'
 import rump from 'rump'
 import webpack from './webpack'
-import {aliases, loaders, glob} from './file'
+import {aliases, glob, loaders} from './file'
 
 const dropConsoleKey = 'drop_console',
       dropDebuggerKey = 'drop_debugger',
@@ -19,8 +19,8 @@ export function rebuild() {
     destination: {scripts: 'scripts'},
   }, configs.main.paths)
   configs.main.scripts = extend(true, {
-    aliases,
-    loaders,
+    aliases: [...aliases],
+    loaders: [...loaders],
     minify: configs.main.environment === 'production',
     sourceMap: configs.main.environment === 'development',
     macros: {

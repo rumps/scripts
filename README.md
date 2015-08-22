@@ -147,15 +147,13 @@ Rump Scripts will detect loaders available in the project and append items as
 needed:
 
 - [`json-loader`](https://github.com/webpack/json-loader) will add support for
-  JSON files.
+ JSON files.
 - [`coffee-loader`](https://github.com/webpack/coffee-loader) will add support
-  for CoffeeScript files. (`.coffee`, `.coffee.md`, and `.litcoffee`)
+for CoffeeScript files. (`.coffee`, `.coffee.md`, and `.litcoffee`)
 - [`html-loader`](https://github.com/webpack/html-loader) will add support to
-  expose HTML files as a string.
+expose HTML files as a string.
 - [`babel-loader`](https://github.com/babel/babel-loader) will add support for
-  transpiling JS and JSX using [Babel](http://babeljs.io/). If `babel-runtime`
-  is available, then [`runtime`](http://babeljs.io/docs/usage/runtime/)  is
-  automatically set. (`.js`, and `.jsx` except from `node_modules` and
-  `bower_components`)
+transpiling JS and JSX using [Babel](http://babeljs.io/). (`.js`, and `.jsx`
+except from `node_modules` and `bower_components`)
 
 Want support for another loader? Open an issue/PR.

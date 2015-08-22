@@ -29,16 +29,12 @@ if(moduleExists('json-loader')) {
 
 // JS with Babel (auto self contain if Babel runtime is available)
 if(moduleExists('babel-loader')) {
-  const loader = {
-    test: /^(?!.*(bower_components|node_modules))+.+\.jsx?$/,
-    loaders: ['babel-loader'],
-  }
   extensions.push('.jsx')
   globExtensions.push('jsx')
-  loaders.push(loader)
-  if(moduleExists('babel-runtime', 'babel-runtime/package')) {
-    loader.loaders[0] += '?optional[]=runtime'
-  }
+  loaders.push({
+    test: /^(?!.*(bower_components|node_modules))+.+\.jsx?$/,
+    loaders: ['babel-loader'],
+  })
 }
 
 // CoffeeScript
@@ -70,7 +66,9 @@ if(moduleExists('riotjs-loader')) {
   globExtensions.push('tag')
   loaders.push({
     test: /\.tag$/,
-    loaders: ['riotjs-loader'],
+    loaders: moduleExists('babel-loader')
+      ? ['babel-loader', 'riotjs-loader?type=none']
+      : ['riotjs-loader'],
   })
   plugins.push(new ProvidePlugin({riot: 'riot'}))
 }
@@ -83,7 +81,7 @@ glob = globExtensions.length > 1
 export {aliases, extensions, glob, loaders, plugins}
 
 function moduleExists(mod, path = mod) {
-  if(modules.includes(mod)) {
+  if(~modules.indexOf(mod)) {
     try {
       require.resolve(path)
       return true
