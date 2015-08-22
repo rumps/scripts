@@ -22,6 +22,14 @@ export default function() {
           output: {path: destination, filename: '[name].js'},
           module: {loaders: configs.main.scripts.loaders},
           plugins: plugins.concat([
+            new ResolverPlugin(new DescPlugin('package.json', [
+              'webpack',
+              'browser',
+              'web',
+              'browserify',
+              ['jam', 'main'],
+              'main',
+            ])),
             new ResolverPlugin(new DescPlugin('bower.json', ['main'])),
             new DefinePlugin(configs.main.scripts.macros),
           ]),
