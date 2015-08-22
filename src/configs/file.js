@@ -28,6 +28,7 @@ if(moduleExists('json-loader')) {
 }
 
 // JS with Babel (auto self contain if Babel runtime is available)
+// TODO drop runtime check in next major version (.babelrc can handle it)
 if(moduleExists('babel-loader')) {
   const loader = {
     test: /^(?!.*(bower_components|node_modules))+.+\.jsx?$/,
