@@ -71,7 +71,9 @@ if(moduleExists('riotjs-loader')) {
   globExtensions.push('tag')
   loaders.push({
     test: /\.tag$/,
-    loaders: ['riotjs-loader'],
+    loaders: moduleExists('babel-loader')
+      ? ['babel-loader', 'riotjs-loader?type=none']
+      : ['riotjs-loader'],
   })
   plugins.push(new ProvidePlugin({riot: 'riot'}))
 }

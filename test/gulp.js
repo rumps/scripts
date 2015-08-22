@@ -44,7 +44,7 @@ describe('tasks', function() {
     console.log = log
     logs.slice(-8).should.eql([
       '',
-      '--- Scripts v0.7.0',
+      '--- Scripts v0.7.1',
       `Processed scripts from test${sep}fixtures are copied with source maps to tmp`,
       `Common modules across processed scripts are built into tmp${sep}common.js`,
       'Affected files:',
@@ -58,7 +58,7 @@ describe('tasks', function() {
     console.log = log
     logs.slice(-8).should.eql([
       '',
-      '--- Scripts v0.7.0',
+      '--- Scripts v0.7.1',
       `Processed scripts from test${sep}fixtures are minified and copied to tmp`,
       `Common modules across processed scripts are built into tmp${sep}common.js`,
       'Affected files:',

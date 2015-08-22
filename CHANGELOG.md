@@ -1,5 +1,8 @@
 # Changelog
 
+#### 0.7.1
+- If Babel is available, parse Riot tags with it
+
 ### 0.7.0
 - Use Babel fully for ES2015+
 - Replace JSHint with ESLint
