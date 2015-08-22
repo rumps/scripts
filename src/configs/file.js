@@ -28,18 +28,13 @@ if(moduleExists('json-loader')) {
 }
 
 // JS with Babel (auto self contain if Babel runtime is available)
-// TODO drop runtime check in next major version (.babelrc can handle it)
 if(moduleExists('babel-loader')) {
-  const loader = {
-    test: /^(?!.*(bower_components|node_modules))+.+\.jsx?$/,
-    loaders: ['babel-loader'],
-  }
   extensions.push('.jsx')
   globExtensions.push('jsx')
-  loaders.push(loader)
-  if(moduleExists('babel-runtime', 'babel-runtime/package')) {
-    loader.loaders[0] += '?optional[]=runtime'
-  }
+  loaders.push({
+    test: /^(?!.*(bower_components|node_modules))+.+\.jsx?$/,
+    loaders: ['babel-loader'],
+  })
 }
 
 // CoffeeScript
