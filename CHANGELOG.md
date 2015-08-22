@@ -1,6 +1,7 @@
 # Changelog
 
-#### 0.7.1
+### 0.8.0
+- Make use of `babel-runtime`
 - If Babel is available, parse Riot tags with it
 
 ### 0.7.0

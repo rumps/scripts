@@ -44,7 +44,7 @@ describe('tasks', function() {
     console.log = log
     logs.slice(-8).should.eql([
       '',
-      '--- Scripts v0.7.1',
+      '--- Scripts v0.8.0',
       `Processed scripts from test${sep}fixtures are copied with source maps to tmp`,
       `Common modules across processed scripts are built into tmp${sep}common.js`,
       'Affected files:',
@@ -58,7 +58,7 @@ describe('tasks', function() {
     console.log = log
     logs.slice(-8).should.eql([
       '',
-      '--- Scripts v0.7.1',
+      '--- Scripts v0.8.0',
       `Processed scripts from test${sep}fixtures are minified and copied to tmp`,
       `Common modules across processed scripts are built into tmp${sep}common.js`,
       'Affected files:',
@@ -132,7 +132,7 @@ describe('tasks', function() {
               .filter(x => x)
               .map(x => x.replace(protocol, '').split('/').join(sep))
       paths.should.have.length(11)
-      paths.filter(x => !x.startsWith('webpack')).should.eql([
+      paths.filter(x => x.indexOf('webpack') !== 0).should.eql([
         resolve('node_modules/riot/riot.js'),
         resolve('test/fixtures/lib/html.html'),
         resolve('node_modules/lodash/internal/isObjectLike.js'),

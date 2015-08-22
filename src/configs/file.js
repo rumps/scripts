@@ -86,7 +86,7 @@ glob = globExtensions.length > 1
 export {aliases, extensions, glob, loaders, plugins}
 
 function moduleExists(mod, path = mod) {
-  if(modules.includes(mod)) {
+  if(~modules.indexOf(mod)) {
     try {
       require.resolve(path)
       return true

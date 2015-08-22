@@ -1,6 +1,6 @@
 {
   "name": "rump-scripts",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "author": "Juan Placencia",
   "description": "Rump piece for building JS with Webpack",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "babel-runtime": "^5.8.20",
     "extend": "^3.0.0",
     "globule": "^0.2.0",
     "gulp-util": "^3.0.6",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "babel": "^5.8.19",
     "babel-eslint": "^4.0.5",
+    "bluebird": "^2.9.34",
     "buffer-equal": "^0.0.1",
     "codecov.io": "^0.1.5",
     "coffee-loader": "^0.7.2",
@@ -46,7 +48,7 @@
     "mz": "^2.0.0",
     "riot": "^2.2.4",
     "riotjs-loader": "^1.1.3",
-    "rump": "^0.7.6",
+    "rump": "^0.8.0",
     "should": "^7.0.2",
     "should-sinon": "0.0.3",
     "sinon": "^1.15.4",
