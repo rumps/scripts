@@ -103,7 +103,8 @@ existing one. (an example is specifying the value `'shared'` will result in a
 #### `options.scripts.library`
 This specifies whether to expose exported modules for scripts at the top level
 source directory using UMD. If value is set to `true`, then exports are
-exposed.
+exposed. If value is set to a string, then that string is used to attach to
+global namespaces such as the `window` property in browsers.
 
 #### `options.scripts.loaders`
 This specifies Webpack loaders to apply to scripts. This is useful for when you
