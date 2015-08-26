@@ -2,6 +2,7 @@
 
 #### 0.8.1
 - Pass `options.scripts.library` to webpack so library can be named
+- Update Webpack
 
 ### 0.8.0
 - Make use of `babel-runtime`
