@@ -1,6 +1,6 @@
 {
   "name": "rump-scripts",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "author": "Juan Placencia",
   "description": "Rump piece for building JS with Webpack",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "extend": "^3.0.0",
     "globule": "^0.2.0",
     "gulp-util": "^3.0.6",
-    "webpack": "~1.11.0"
+    "webpack": "~1.12.0"
   },
   "devDependencies": {
     "babel": "^5.8.19",

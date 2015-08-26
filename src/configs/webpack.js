@@ -60,6 +60,7 @@ export default function() {
                                                 `${commonsChunk}.js`))
   }
   if(configs.main.scripts.library) {
+    options.output.library = configs.main.scripts.library
     options.output.libraryTarget = 'umd'
   }
   return extend(true, options, configs.main.scripts.webpack)
