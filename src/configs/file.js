@@ -27,7 +27,7 @@ if(moduleExists('json-loader')) {
   })
 }
 
-// JS with Babel (auto self contain if Babel runtime is available)
+// JS with Babel
 if(moduleExists('babel-loader')) {
   extensions.push('.jsx')
   globExtensions.push('jsx')
