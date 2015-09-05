@@ -4,20 +4,20 @@ import rump from 'rump'
 import webpack from 'webpack'
 import {PluginError, colors, log} from 'gulp-util'
 
-const name = ::rump.taskName,
-      task = ::gulp.task,
-      {configs} = rump,
-      {supportsColor} = colors
+const name = ::rump.taskName
+const task = ::gulp.task
+const {configs} = rump
+const {supportsColor} = colors
 
 task(name('build:scripts'), build)
 tasks[name('build')].dep.push(name('build:scripts'))
 tasks[name('watch')].dep.push(name('build:scripts'))
 
 function build(callback) {
-  const options = extend({}, configs.webpack),
-        {watchOptions} = options
-  let callbackCalled = false,
-      compiler
+  const options = extend({}, configs.webpack)
+  const {watchOptions} = options
+  let callbackCalled = false
+  let compiler
 
   delete options.watchOptions
   compiler = webpack(options)

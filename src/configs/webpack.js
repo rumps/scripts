@@ -5,42 +5,42 @@ import {basename, extname, join, resolve, sep} from 'path'
 import {DefinePlugin, ResolverPlugin, optimize} from 'webpack'
 import {extensions, plugins} from './file'
 
-const DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin,
-      protocol = process.platform === 'win32' ? 'file:///' : 'file://',
-      {configs} = rump,
-      {CommonsChunkPlugin, DedupePlugin} = optimize,
-      {UglifyJsPlugin, OccurrenceOrderPlugin} = optimize
+const DescPlugin = ResolverPlugin.DirectoryDescriptionFilePlugin
+const protocol = process.platform === 'win32' ? 'file:///' : 'file://'
+const {configs} = rump
+const {CommonsChunkPlugin, DedupePlugin} = optimize
+const {UglifyJsPlugin, OccurrenceOrderPlugin} = optimize
 
 export default function() {
   let commonsChunk = 'common'
   const source = join(configs.main.paths.source.root,
-                      configs.main.paths.source.scripts),
-        destination = join(configs.main.paths.destination.root,
-                           configs.main.paths.destination.scripts),
-        options = {
-          entry: entries(),
-          output: {path: destination, filename: '[name].js'},
-          module: {loaders: configs.main.scripts.loaders},
-          plugins: plugins.concat([
-            new ResolverPlugin(new DescPlugin('package.json', [
-              'webpack',
-              'browser',
-              'web',
-              'browserify',
-              ['jam', 'main'],
-              'main',
-            ])),
-            new ResolverPlugin(new DescPlugin('bower.json', ['main'])),
-            new DefinePlugin(configs.main.scripts.macros),
-          ]),
-          resolve: {
-            alias: configs.main.scripts.aliases,
-            extensions: [''].concat(extensions),
-            modulesDirectories: ['node_modules', 'bower_components'],
-            root: resolve(source),
-          },
-          watchOptions: {aggregateTimeout: 200},
-        }
+                      configs.main.paths.source.scripts)
+  const destination = join(configs.main.paths.destination.root,
+                           configs.main.paths.destination.scripts)
+  const options = {
+    entry: entries(),
+    output: {path: destination, filename: '[name].js'},
+    module: {loaders: configs.main.scripts.loaders},
+    plugins: plugins.concat([
+      new ResolverPlugin(new DescPlugin('package.json', [
+        'webpack',
+        'browser',
+        'web',
+        'browserify',
+        ['jam', 'main'],
+        'main',
+      ])),
+      new ResolverPlugin(new DescPlugin('bower.json', ['main'])),
+      new DefinePlugin(configs.main.scripts.macros),
+    ]),
+    resolve: {
+      alias: configs.main.scripts.aliases,
+      extensions: [''].concat(extensions),
+      modulesDirectories: ['node_modules', 'bower_components'],
+      root: resolve(source),
+    },
+    watchOptions: {aggregateTimeout: 200},
+  }
 
   if(configs.main.scripts.sourceMap) {
     options.debug = true

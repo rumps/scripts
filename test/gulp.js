@@ -9,10 +9,10 @@ import {exists, readFile, writeFile} from 'mz/fs'
 import {resolve, sep} from 'path'
 import {spy} from 'sinon'
 
-const protocol = process.platform === 'win32' ? 'file:///' : 'file://',
-      {stripColor} = colors
+const protocol = process.platform === 'win32' ? 'file:///' : 'file://'
+const {stripColor} = colors
 
-describe('tasks', function() {
+describe('tasks', function describeTasks() {
   this.timeout(0)
 
   afterEach(() => {
@@ -37,8 +37,8 @@ describe('tasks', function() {
   })
 
   it('displays correct information in info task', () => {
-    const logs = [],
-          {log} = console
+    const logs = []
+    const {log} = console
     console.log = newLog
     gulp.start('spec:info')
     console.log = log
@@ -121,14 +121,14 @@ describe('tasks', function() {
     })
 
     it('handles source maps in development', async() => {
-      const js = readFile('tmp/index.js'),
-            coffee = readFile('tmp/coffee.js'),
-            common = readFile('tmp/common.js'),
-            contents = await Promise.all([common, js, coffee]),
-            pathSet = contents
+      const js = readFile('tmp/index.js')
+      const coffee = readFile('tmp/coffee.js')
+      const common = readFile('tmp/common.js')
+      const contents = await Promise.all([common, js, coffee])
+      const pathSet = contents
               .map(x => convert.fromSource(x.toString()))
-              .map(x => x.getProperty('sources').sort()),
-            paths = [].concat(...pathSet)
+              .map(x => x.getProperty('sources').sort())
+      const paths = [].concat(...pathSet)
               .filter(x => x)
               .map(x => x.replace(protocol, '').split('/').join(sep))
       paths.should.have.length(11)

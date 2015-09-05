@@ -6,29 +6,29 @@ import {colors} from 'gulp-util'
 import {join, relative} from 'path'
 import {version} from '../../package'
 
-const name = ::rump.taskName,
-      task = ::gulp.task,
-      {blue, green, magenta, yellow} = colors,
-      {CommonsChunkPlugin} = optimize,
-      {configs} = rump
+const name = ::rump.taskName
+const task = ::gulp.task
+const {blue, green, magenta, yellow} = colors
+const {CommonsChunkPlugin} = optimize
+const {configs} = rump
 
 task(name('info:scripts'), () => {
-  const {plugins} = configs.webpack,
-        glob = join(configs.main.paths.source.root,
+  const {plugins} = configs.webpack
+  const glob = join(configs.main.paths.source.root,
                     configs.main.paths.source.scripts,
-                    configs.main.globs.build.scripts),
-        files = find([glob].concat(configs.main.globs.global)),
-        source = join(configs.main.paths.source.root,
-                      configs.main.paths.source.scripts),
-        destination = join(configs.main.paths.destination.root,
-                           configs.main.paths.destination.scripts),
-        commonFile = plugins.reduce((currentFile, plugin) => {
-          return !currentFile && plugin instanceof CommonsChunkPlugin
-            ? join(configs.main.paths.destination.root,
-                   configs.main.paths.destination.scripts,
-                   plugin.filenameTemplate)
-            : currentFile
-        }, null)
+                    configs.main.globs.build.scripts)
+  const files = find([glob].concat(configs.main.globs.global))
+  const source = join(configs.main.paths.source.root,
+                      configs.main.paths.source.scripts)
+  const destination = join(configs.main.paths.destination.root,
+                           configs.main.paths.destination.scripts)
+  const commonFile = plugins.reduce((currentFile, plugin) => {
+    return !currentFile && plugin instanceof CommonsChunkPlugin
+      ? join(configs.main.paths.destination.root,
+             configs.main.paths.destination.scripts,
+             plugin.filenameTemplate)
+      : currentFile
+  }, null)
   let action = 'copied'
 
   if(!files.length) {

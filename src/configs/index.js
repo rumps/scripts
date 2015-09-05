@@ -3,9 +3,7 @@ import rump from 'rump'
 import webpack from './webpack'
 import {aliases, glob, loaders} from './file'
 
-const dropConsoleKey = 'drop_console',
-      dropDebuggerKey = 'drop_debugger',
-      {configs} = rump
+const {configs} = rump
 
 rebuild()
 
@@ -29,7 +27,7 @@ export function rebuild() {
   }, configs.main.scripts)
   configs.main.scripts.uglifyjs = extend(true, {
     output: {comments: false},
-    compress: {[dropConsoleKey]: true, [dropDebuggerKey]: true},
+    compress: {drop_console: true, drop_debugger: true},
   }, configs.main.scripts.uglifyjs)
   configs.main.scripts.webpack = webpack()
 }

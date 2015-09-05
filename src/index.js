@@ -11,10 +11,10 @@ rump.on('gulp:main', (...args) => {
   rump.emit('gulp:scripts', ...args)
 })
 
-Object.defineProperty(rump.configs, 'uglifyjs', {
+Reflect.defineProperty(rump.configs, 'uglifyjs', {
   get: () => rump.configs.main.scripts.uglifyjs,
 })
 
-Object.defineProperty(rump.configs, 'webpack', {
+Reflect.defineProperty(rump.configs, 'webpack', {
   get: () => rump.configs.main.scripts.webpack,
 })

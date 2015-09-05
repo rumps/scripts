@@ -1,21 +1,24 @@
 import {resolve} from 'path'
 import {ProvidePlugin} from 'webpack'
 
-const aliases = {},
-      extensions = ['.js'],
-      globExtensions = ['js'],
-      loaders = [],
-      plugins = [],
-      pkg = require(resolve('package')),
-      {dependencies = {}} = pkg,
-      {devDependencies = {}} = pkg,
-      {optionalDependencies = {}} = pkg,
-      {peerDependencies = {}} = pkg,
-      keys1 = Object.keys(dependencies),
-      keys2 = Object.keys(devDependencies),
-      keys3 = Object.keys(optionalDependencies),
-      keys4 = Object.keys(peerDependencies),
-      modules = [...keys1, ...keys2, ...keys3, ...keys4]
+const aliases = {}
+const extensions = ['.js']
+const globExtensions = ['js']
+const loaders = []
+const plugins = []
+const pkg = require(resolve('package'))
+const {
+  dependencies = {},
+  devDependencies = {},
+  optionalDependencies = {},
+  peerDependencies = {},
+} = pkg
+const modules = [
+  ...Object.keys(dependencies),
+  ...Object.keys(devDependencies),
+  ...Object.keys(optionalDependencies),
+  ...Object.keys(peerDependencies),
+]
 let glob
 
 // JSON
